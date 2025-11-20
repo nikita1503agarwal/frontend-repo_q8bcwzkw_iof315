@@ -4,12 +4,33 @@
 
 @layer base {
   :root {
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-geist: 'Geist', system-ui, sans-serif;
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-mona: 'Mona Sans', system-ui, sans-serif;
-    --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-manrope: 'Manrope', system-ui, sans-serif;
+    /* Typography */
+    --font-sans: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Light theme (default) */
+    --color-primary: #00B8A9;
+    --color-secondary: #203A43;
+    --color-bg: #FFFFFF;
+    --color-surface: #F8FAFA;
+    --color-accent: #FFB703;
+    --color-text: #1E1E1E;
+    --color-text-secondary: #5F6C7B;
+
+    --radius: 8px;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+    --shadow-lg: 0 16px 40px rgba(0,0,0,0.12);
+  }
+
+  .dark {
+    /* Dark theme */
+    --color-primary: #00A79D;
+    --color-secondary: #121212;
+    --color-bg: #181A1B;
+    --color-surface: #222426;
+    --color-accent: #FFC857;
+    --color-text: #E8EAEA;
+    --color-text-secondary: #9DA4AA;
   }
 
   html {
@@ -18,29 +39,41 @@
   }
 
   body {
-    @apply antialiased;
+    @apply antialiased bg-[var(--color-bg)] text-[color:var(--color-text)];
   }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-5 py-3 font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    border-radius: var(--radius);
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+  .btn-primary:hover { filter: brightness(0.95); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid color-mix(in srgb, var(--color-text-secondary) 40%, transparent);
+  }
+  .btn-secondary:hover { background: color-mix(in srgb, var(--color-primary) 8%, transparent); }
+  .btn-ghost { @apply text-[color:var(--color-text-secondary)]; }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-text-secondary) 12%, transparent);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius);
+  }
+}
+
+/* Utilities for subtle animations */
 @layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
-  }
-
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
-  }
+  .fade-in { animation: fadeIn 600ms ease both; }
+  .rise { animation: rise 600ms ease both; }
 }
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes rise { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
