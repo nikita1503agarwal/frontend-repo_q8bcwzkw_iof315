@@ -24,13 +24,13 @@ export default function Pricing() {
   return (
     <section id="pricing" className="py-20">
       <div className="mx-auto max-w-[1200px] px-6">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Simple, transparent pricing</h2>
           <p className="mt-3 text-[color:var(--color-text-secondary)]">Start free. Upgrade as you grow. Cancel anytime.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {tiers.map(t => (
-            <div key={t.name} className={`card p-6 ${t.highlight ? 'ring-2 ring-[var(--color-primary)]' : ''}`}>
+          {tiers.map((t, i) => (
+            <div key={t.name} className={`card p-6 ${t.highlight ? 'ring-2 ring-[var(--color-primary)]' : ''} transition-base rise`} style={{animationDelay: `${i * 140}ms`}}>
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold">{t.name}</h3>
                 {t.highlight && <span className="text-xs px-2 py-1 rounded-full bg-[var(--color-primary)]/15 text-[var(--color-primary)]">Popular</span>}

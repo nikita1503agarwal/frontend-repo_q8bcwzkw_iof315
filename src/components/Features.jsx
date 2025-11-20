@@ -27,14 +27,14 @@ export default function Features() {
   return (
     <section id="features" className="py-20">
       <div className="mx-auto max-w-[1200px] px-6">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-12 fade-in">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Everything you need to launch</h2>
           <p className="mt-3 text-[color:var(--color-text-secondary)]">A complete toolkit for building and managing your AI FAQ assistant—without changing your stack.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {items.map(({icon: Icon, title, desc}) => (
-            <div key={title} className="card p-6 hover:shadow-[var(--shadow-md)] transition-shadow">
-              <div className="h-10 w-10 rounded-md grid place-items-center bg-[var(--color-primary)]/10 text-[var(--color-primary)] mb-4">
+          {items.map(({icon: Icon, title, desc}, i) => (
+            <div key={title} className="card p-6 hover:shadow-[var(--shadow-md)] transition-shadow transition-base rise" style={{animationDelay: `${i * 120}ms`}}>
+              <div className="h-10 w-10 rounded-md grid place-items-center bg-[var(--color-primary)]/10 text-[var(--color-primary)] mb-4 ring-hover">
                 <Icon size={20} />
               </div>
               <h3 className="font-semibold mb-1">{title}</h3>

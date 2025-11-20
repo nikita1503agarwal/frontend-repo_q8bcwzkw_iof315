@@ -21,7 +21,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-black/30">
+    <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-black/30 transition-base">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="flex h-16 items-center justify-between">
           <a href="#" className="flex items-center gap-2">
@@ -30,10 +30,10 @@ export default function Navbar() {
           </a>
 
           <nav className="hidden md:flex items-center gap-8 text-[color:var(--color-text-secondary)]">
-            <a href="#features" className="hover:text-[color:var(--color-text)]">Features</a>
-            <a href="#pricing" className="hover:text-[color:var(--color-text)]">Pricing</a>
-            <a href="#testimonials" className="hover:text-[color:var(--color-text)]">Testimonials</a>
-            <a href="#docs" className="hover:text-[color:var(--color-text)]">Docs</a>
+            <a href="#features" className="hover:text-[color:var(--color-text)] transition-colors">Features</a>
+            <a href="#pricing" className="hover:text-[color:var(--color-text)] transition-colors">Pricing</a>
+            <a href="#testimonials" className="hover:text-[color:var(--color-text)] transition-colors">Testimonials</a>
+            <a href="#docs" className="hover:text-[color:var(--color-text)] transition-colors">Docs</a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -46,7 +46,7 @@ export default function Navbar() {
         </div>
 
         {open && (
-          <div className="md:hidden pb-4 text-[color:var(--color-text-secondary)]">
+          <div className="md:hidden pb-4 text-[color:var(--color-text-secondary)] fade-in">
             <div className="flex flex-col gap-3">
               <a href="#features" className="hover:text-[color:var(--color-text)]">Features</a>
               <a href="#pricing" className="hover:text-[color:var(--color-text)]">Pricing</a>
